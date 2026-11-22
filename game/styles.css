@@ -1,0 +1,91 @@
+/* SOLANO HEAT 3D — styles.css: HUD and menu styling over the 3D canvas. */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #10151c; }
+body { font-family: "Segoe UI", Arial, sans-serif; color: #f2ede2; }
+#gameCanvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+#hud { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+#topLeft { position: absolute; top: 16px; left: 18px; max-width: 44%; }
+#objective {
+  font-size: 17px; font-weight: 700; letter-spacing: 0.4px; color: #ffdf7e;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8), 0 0 2px #000;
+}
+#prompt {
+  margin-top: 6px; font-size: 15px; font-weight: 600; color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.85);
+}
+#topRight { position: absolute; top: 14px; right: 18px; text-align: right; }
+#cash {
+  font-size: 30px; font-weight: 800; color: #7ddb6a; letter-spacing: 1px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+#stars { font-size: 26px; color: #ffcf3f; text-shadow: 0 2px 5px rgba(0,0,0,0.85); line-height: 1; }
+#muteBtn {
+  pointer-events: auto; margin-top: 6px; background: rgba(10,14,18,0.55); color: #fff;
+  border: 1px solid rgba(255,255,255,0.35); border-radius: 6px; font-size: 16px;
+  padding: 3px 9px; cursor: pointer;
+}
+#bottomLeft { position: absolute; left: 18px; bottom: 18px; width: 210px; }
+.barLabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.75); text-shadow: 0 1px 3px #000; }
+.barLabel.danger { color: #ff6a5e; }
+.bar {
+  height: 13px; background: rgba(8,10,12,0.62); border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 3px; overflow: hidden; margin: 2px 0 6px;
+}
+.bar.thin { height: 8px; }
+#healthFill { height: 100%; width: 100%; background: #53c24a; transition: width 0.18s; }
+#armorFill { height: 100%; width: 0%; background: #7fb6d9; transition: width 0.18s; }
+#bustFill { height: 100%; width: 0%; background: #d43a2a; }
+#speedo { font-size: 20px; font-weight: 800; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.85); margin-top: 2px; }
+#minimap {
+  position: absolute; right: 18px; bottom: 18px; width: 216px; height: 216px;
+  border-radius: 8px; box-shadow: 0 4px 18px rgba(0,0,0,0.55);
+}
+#message {
+  position: absolute; top: 17%; left: 50%; transform: translateX(-50%);
+  font-size: 25px; font-weight: 800; letter-spacing: 0.5px; color: #ffffff; text-align: center;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.9), 0 0 3px #000; opacity: 0; transition: opacity 0.3s;
+  max-width: 80%;
+}
+#dialogue {
+  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
+  width: min(680px, 86%); background: rgba(8,12,16,0.82); border: 1px solid rgba(255,207,63,0.5);
+  border-left: 5px solid #ffcf3f; border-radius: 8px; padding: 12px 16px 10px;
+}
+#dlgWho { font-size: 13px; font-weight: 800; letter-spacing: 1.5px; color: #ffcf3f; text-transform: uppercase; }
+#dlgText { font-size: 16.5px; line-height: 1.45; margin-top: 3px; }
+#dlgHint { text-align: right; font-size: 12px; color: rgba(255,255,255,0.6); }
+
+.screen {
+  position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, rgba(10,16,24,0.42), rgba(10,16,24,0.66));
+}
+.panel {
+  width: min(620px, 92%); background: rgba(10,15,20,0.86); border: 1px solid rgba(255,207,63,0.45);
+  border-radius: 14px; padding: 30px 36px 26px; text-align: center;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.6);
+}
+.panel h1 {
+  font-family: "Arial Black", "Segoe UI", Arial, sans-serif; font-size: 46px; letter-spacing: 1px;
+  color: #ffffff; line-height: 1.02;
+}
+.panel h1 span { color: #ffcf3f; }
+.panel h2 {
+  font-family: "Arial Black", "Segoe UI", Arial, sans-serif; font-size: 36px; letter-spacing: 2px; color: #ffcf3f;
+}
+.tagline { margin-top: 8px; font-size: 16px; color: #ffd98a; font-weight: 600; }
+.story { margin: 14px auto 4px; font-size: 15px; line-height: 1.55; color: #e8e2d2; max-width: 52ch; }
+.controls {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5px 18px; text-align: left;
+  margin: 18px auto 6px; max-width: 480px; font-size: 13.5px; color: #cfd4d8;
+}
+.controls b { color: #ffcf3f; }
+.bigBtn {
+  pointer-events: auto; display: block; margin: 16px auto 0; padding: 13px 42px;
+  font-size: 18px; font-weight: 800; letter-spacing: 2px; color: #141a10;
+  background: linear-gradient(180deg, #ffd94a, #f0a81e); border: none; border-radius: 9px; cursor: pointer;
+  box-shadow: 0 6px 20px rgba(240,168,30,0.4);
+}
+.bigBtn:hover { filter: brightness(1.08); }
+.bigBtn.alt { background: linear-gradient(180deg, #e8e4da, #b8bcc2); box-shadow: 0 6px 20px rgba(0,0,0,0.35); }
+.fineprint { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
