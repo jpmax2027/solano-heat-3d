@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLANO HEAT 3D — an open-world crime game in Port Solano</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="gameCanvas"></canvas>
+
+<div id="hud" style="display:none">
+  <div id="topLeft">
+    <div id="objective"></div>
+    <div id="prompt"></div>
+  </div>
+  <div id="topRight">
+    <div id="cash">$0</div>
+    <div id="stars">☆☆☆☆☆</div>
+    <button id="muteBtn" title="Mute (M)">🔊</button>
+  </div>
+  <div id="bottomLeft">
+    <div class="barLabel">HEALTH</div>
+    <div class="bar"><div id="healthFill"></div></div>
+    <div class="barLabel">ARMOR</div>
+    <div class="bar thin"><div id="armorFill"></div></div>
+    <div id="bustWrap" style="display:none">
+      <div class="barLabel danger">BUSTED</div>
+      <div class="bar"><div id="bustFill"></div></div>
+    </div>
+    <div id="speedo"></div>
+  </div>
+  <canvas id="minimap" width="216" height="216"></canvas>
+  <div id="message"></div>
+  <div id="dialogue" style="display:none">
+    <div id="dlgWho">Rico</div>
+    <div id="dlgText"></div>
+    <div id="dlgHint">E ▸</div>
+  </div>
+</div>
+
+<div id="titleScreen" class="screen">
+  <div class="panel">
+    <h1>SOLANO <span>HEAT</span> 3D</h1>
+    <p class="tagline">An open-world crime game in the fictional city of Port Solano.</p>
+    <p class="story">You are <b>Rio Vargas</b>, a getaway driver fresh off the bus with $120 and a
+    phone number. Work Rico's jobs, race Lucia's boulevard, steal for Luna —
+    and when the whole Port Solano PD comes down on you, run for the boat at
+    the end of Muelle 9.</p>
+    <div class="controls">
+      <div><b>W A S D</b> walk / drive</div>
+      <div><b>Shift</b> sprint</div>
+      <div><b>E</b> enter car · talk · confirm</div>
+      <div><b>Space</b> handbrake</div>
+      <div><b>Mouse</b> look (click the game first)</div>
+      <div><b>P / Esc</b> pause &nbsp;·&nbsp; <b>M</b> mute</div>
+    </div>
+    <button id="newGameBtn" class="bigBtn">NEW GAME</button>
+    <button id="continueGameBtn" class="bigBtn alt" style="display:none">CONTINUE</button>
+    <p class="fineprint">Steal cars, outrun the Interceptors, don't get busted.
+    Progress saves in your browser. Everything here is original — Port Solano exists nowhere else.</p>
+  </div>
+</div>
+
+<div id="pauseScreen" class="screen" style="display:none">
+  <div class="panel">
+    <h2>PAUSED</h2>
+    <p class="story">Port Solano waits for no one — except now.</p>
+    <button id="resumeBtn" class="bigBtn">RESUME</button>
+    <div class="controls">
+      <div><b>W A S D</b> walk / drive</div>
+      <div><b>E</b> enter car · talk</div>
+      <div><b>Space</b> handbrake</div>
+      <div><b>M</b> mute</div>
+    </div>
+  </div>
+</div>
+
+<div id="endScreen" class="screen" style="display:none">
+  <div class="panel">
+    <h2 id="endTitle">BUSTED</h2>
+    <p id="endText" class="story"></p>
+    <button id="continueBtn" class="bigBtn">CONTINUE</button>
+  </div>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="config.js"></script>
+<script src="random.js"></script>
+<script src="audio.js"></script>
+<script src="world.js"></script>
+<script src="vehicles.js"></script>
+<script src="people.js"></script>
+<script src="police.js"></script>
+<script src="missions.js"></script>
+<script src="hud.js"></script>
+<script src="main.js"></script>
+<script src="shots.js"></script>
+</body>
+</html>
